@@ -39,9 +39,9 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 			</button>
 		</div>
 		<div id="header-menu-sidebar-inner" class="header-menu-sidebar-inner">
-			<div class="mobile-blog-name">
+			<!--div class="mobile-blog-name">
 				<?php echo get_bloginfo( 'name' ); ?>
-			</div>
+			</div-->
 			<?php render_components( HeaderBuilder::BUILDER_NAME ); ?>
 		</div>
 	</div>

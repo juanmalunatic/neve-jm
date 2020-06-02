@@ -1,7 +1,7 @@
 /*
 Theme Name:     LunaLopez2020
 Theme URI:      https://themeisle.com/themes/neve/
-Template:       Neve
+Template:       neve
 Author:         Juan Manuel Luna (based on ThemeIsle's code)
 Author URI:     lunalopez.ml
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
@@ -76,7 +76,8 @@ a:hover,
 .builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a {
     position: relative;
     padding-bottom: 4px;
-    padding: 0 0 4px 0 !important; /* I think only for Cabin font */
+    /* Cabin (font) needs a bit of padding */
+    padding: 0 0 4px 0 !important;
 
     text-decoration: none;
     color: var(--color-text--dark);
@@ -89,10 +90,24 @@ a:hover,
     background-size: 8px 4px;
 }
 
+/* Menu links */
+.builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a
+{
+    --padding: 0 0 5px 0 !important;
+    background-image: linear-gradient(to right, var(--color-blue-light) 100%, transparent 100%);
+    --background-size: 8px 3px;
+    --background: none;
+}
+
+.builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:hover {
+    background-image: linear-gradient(to right, var(--color-blue-medium) 100%, transparent 100%);
+    background-color: var(--color-blue-light);
+}
+
 .entry-title a
 {
-    /* Roboto doesn't need a padding */
-    padding: 0 !important; /* I think only for Cabin font */
+    /* Roboto doesn't need that much padding */
+    padding: 0 0 1px 0 !important;
 }
 
 a:hover,
@@ -109,11 +124,28 @@ header.header {
     width: 100%;
     z-index: 100;
     height: var(--header-height);
-    background: var(--color-blue-light);
+
+    --background: var(--color-blue-light);
+    background: white;
+
+    border-bottom: var(--color-blue-dark) solid 4px;
+    border-bottom: var(--color-blue-medium) solid 4px;
 
     display: flex;
     align-items: center;
+
+    /*
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06),
+                0 1px 4px rgba(0,0,0,0.05);
+    */
 }
+
+@media screen and (max-width: 960px) {
+    header.header {
+        --border-bottom: var(--color-blue-dark) solid 4px;
+    }
+}
+
 
 #header-grid {
     width: 100%;
@@ -123,8 +155,9 @@ header.header {
     box-shadow: none;
 }
 
+.nv-navbar,
 .hfg_header .header-main-inner {
-    background: var(--color-blue-light);
+    background: transparent;
 }
 
 .site-logo h1,
@@ -188,6 +221,20 @@ header.header {
     border-bottom: 4px solid var(--color-blue-light);
 }
 
+.nv-meta-list {
+    padding-top: 5px;
+}
+
+.article-content-col .content {
+    --border-color: var(--color-blue-light);
+    border-width: 2px;
+}
+
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea {
+    --border-color: var(--color-blue-medium);
+    border-width: 1px;
+}
+
 /** ============================   Footer  =============================== **/
 
 #footer {
@@ -197,7 +244,7 @@ header.header {
   padding-bottom: 5px;
   padding-top: 7px;
 
-  border: var(--color-blue-light) solid 4px;
+  border: var(--color-blue-medium) solid 4px;
   border-width: 4px 0 0 0;
 }
 @media screen and (min-width: 640px) {
@@ -277,9 +324,18 @@ header.header {
 }
 
 /** Menu **/
-.menu_sidebar_slide_left .header-menu-sidebar , /* showing */
-.hiding-header-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar /*hiding */ {
-    transition: transform .1s linear;
+
+.builder-item--nav-icon .navbar-toggle,
+.close-sidebar-panel .navbar-toggle
+ {
+    padding: 7px;
+    border-color: transparent !important;
+    --background-color: var(--color-blue-light);
+    background: #fff;
+    border-width: 2px;
+}
+.header-main-inner .icon-bar {
+    background-color: black;
 }
 
 .menu_sidebar_slide_left .header-menu-sidebar {
@@ -301,9 +357,44 @@ header.header {
 }
 .header-menu-sidebar-inner {
     position: relative;
-    top: -58px;
+    margin: 0;
+    padding: 0;
+    top: calc(-34px);
+    height: 100px;
 }
-.close-sidebar-panel {
+.close-sidebar-panel .navbar-toggle {
     position:relative;
     z-index: 99999999999;
+}
+
+/* Convert slide_left into slide_down :) */
+
+/* Make height auto */
+.is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar,
+.hiding-header-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar,
+.nav-clickaway-overlay {
+    height: auto;
+}
+
+/* Change sliding direction and speed */
+.menu_sidebar_slide_left .header-menu-sidebar {
+    transform: translate3d(0, -100%, 0);
+}
+
+.hiding-header-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar {
+    transform: translate3d(0, -100%, 0);
+}
+#header-menu-sidebar {
+    --speed: 0.15s;
+}
+
+.menu_sidebar_slide_left .header-menu-sidebar /* showing */ {
+    transition: transform var(--speed) linear;
+}
+.hiding-header-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar /*hiding */ {
+    transition: transform var(--speed) linear;
+}
+
+.header-menu-sidebar .item--inner {
+    transition: transform var(--speed), opacity var(--speed);
 }
