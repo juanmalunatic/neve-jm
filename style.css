@@ -1,0 +1,309 @@
+/*
+Theme Name:     LunaLopez2020
+Theme URI:      https://themeisle.com/themes/neve/
+Template:       Neve
+Author:         Juan Manuel Luna (based on ThemeIsle's code)
+Author URI:     lunalopez.ml
+Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
+Version:        1.0.0
+License:        GNU General Public License v2 or later
+License URI:    http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:    neve
+Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles
+*/
+
+/*
+https://docs.themeisle.com/article/985-how-to-create-a-child-theme-for-neve
+
+If you want to make more advanced changes in the child theme, follow with the steps below:
+
+1. Locate the views folder inside Neve (in the root of the folder) and copy it inside the child theme's folder.
+
+2. Make any changes you need in the views folder of the child theme.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@200;400;700&display=swap");
+@import url("css/font-sizes.css");
+@import url("css/stackicons-social-minimal.css");
+
+:root {
+  --color-blue-light: #eaf8ff;
+  --color-blue-medium: #9fe2ff;
+  --color-blue-dark: #65cefd;
+  --color-text--dark: #000;
+
+  --header-height: 53px;
+}
+
+/* Fonts */
+body {
+  font-family: Cabin;
+  color: var(--color-text--dark);
+
+  /* This depends on font-sizes.css */
+  --fs-3: calc(var(--base-em) * var(--ms3));
+  --fs-2: calc(var(--base-em) * var(--ms2));
+  --fs-1: calc(var(--base-em) * var(--ms1));
+  --fs-0: calc(var(--base-em) * var(--ms0));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p.widget-title,
+#footer,
+#header-grid {
+  font-family: "Roboto Condensed";
+}
+
+[class*="st-icon-"]::before {
+  font-family: "Stackicons-Social";
+}
+
+/** General styles **/
+
+/* Links and underline */
+a,
+a:hover,
+.entry-title a,
+#recentcomments .recentcomments a,
+.nv-comment-content a,
+.nv-content-wrap a:not(.button):not(.wp-block-file__button),
+.header-main-inner a:not(.button),
+.builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a {
+    position: relative;
+    padding-bottom: 4px;
+    padding: 0 0 4px 0 !important; /* I think only for Cabin font */
+
+    text-decoration: none;
+    color: var(--color-text--dark);
+    display: inline;
+
+    /* Underline */
+    background-image: linear-gradient(to right, var(--color-blue-medium) 100%, transparent 100%);
+    background-position: 0 calc(100% - 1px); /* second param controls height*/
+    background-repeat: repeat-x;
+    background-size: 8px 4px;
+}
+
+.entry-title a
+{
+    /* Roboto doesn't need a padding */
+    padding: 0 !important; /* I think only for Cabin font */
+}
+
+a:hover,
+#recentcomments .recentcomments a:hover {
+    background-color: var(--color-blue-light);
+    background-image: linear-gradient(to right, var(--color-blue-dark) 100%, transparent 100%);
+}
+
+/** ============================   Header  =============================== **/
+
+/* Sticky */
+header.header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    height: var(--header-height);
+    background: var(--color-blue-light);
+
+    display: flex;
+    align-items: center;
+}
+
+#header-grid {
+    width: 100%;
+}
+
+.hfg_header.site-header {
+    box-shadow: none;
+}
+
+.hfg_header .header-main-inner {
+    background: var(--color-blue-light);
+}
+
+.site-logo h1,
+.site-logo p {
+    /*need to equalize line-height as template uses h1 on frontpage and p on secondary pages */
+    /*if not equalized; unequal display */
+    line-height: calc(var(--base) * var(--ms0));
+    font-weight: 500;
+}
+/* This is the title */
+.header-main-inner a:not(.button) {
+    background: none;
+    padding: 1px 0 0 0 !important;
+}
+
+/* Header :: Navigation links */
+
+.builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li.current-menu-item > a,
+.builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li.current-menu-item:hover > a,
+.builder-item--primary-menu .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a {
+    color: var(--color-text--dark);
+}
+
+/* Remove extra horizontal paddings */
+.builder-item,
+.builder-item--logo .site-logo {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/** ===========================   Body ===================================**/
+#content {
+    padding-top: var(--header-height);
+}
+.nv-meta-list a {
+    background-image: linear-gradient(to right, var(--color-blue-light) 100%, transparent 100%);
+}
+.nv-meta-list a:hover {
+    background-image: linear-gradient(to right, var(--color-blue-medium) 100%, transparent 100%);
+}
+
+/* Comments on a post */
+.comments-area a:hover,
+.nv-comment-content .edit-reply a:hover {
+    text-decoration: none;
+}
+.nv-comment-header .comment-author > a:nth-of-type(1) {
+    margin-top: 3px;
+    align-self: flex-start; /* equivalent to width: auto */
+    height: 25px;
+
+    background-image: linear-gradient(to right, var(--color-blue-light) 100%, transparent 100%);
+}
+.nv-comment-header .comment-author > a:nth-of-type(1):hover {
+    background-image: linear-gradient(to right, var(--color-blue-medium) 100%, transparent 100%);
+}
+
+.nv-page-title-wrap.nv-big-title .nv-page-title{
+    border-bottom: 4px solid var(--color-blue-light);
+}
+
+/** ============================   Footer  =============================== **/
+
+#footer {
+  --background: #f00;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  padding-top: 7px;
+
+  border: var(--color-blue-light) solid 4px;
+  border-width: 4px 0 0 0;
+}
+@media screen and (min-width: 640px) {
+    #footer {
+        height: 92px;
+    }
+}
+
+.footer__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+
+  --background: #f90;
+}
+
+@media screen and (min-width: 960px) {
+  .footer__content {
+    max-width: 1170px;
+  }
+}
+@media screen and (min-width: 680px) {
+    .footer__content {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-column-gap: 45px;
+    }
+}
+
+#footer .block {
+  --outline: #f90 solid 1px;
+}
+
+#footer .block__name .name {
+  font-size: var(--fs-1);
+  display: block;
+}
+#footer .block__name .mail {
+  position: relative;
+  top: -4px;
+}
+
+
+#footer .block__social .social__img {
+  font-size: calc(var(--fs-0) * 0.7);
+  padding-right: 5px;
+}
+
+#footer .block__info {
+    padding-top: 15px;
+    width: 100%;
+    font-size: calc(var(--fs-0)*0.8);
+}
+#footer .block__info br {
+    display: none;
+}
+
+@media screen and (min-width: 640px) {
+    #footer .block__info {
+        text-align: right;
+    }
+    #footer .block__social {
+        padding-top: 5px;
+    }
+    #footer .block__info br {
+        display: block;
+    }
+    #footer .block__info {
+        padding-top: 5px;
+        width: auto;
+        font-size: var(--fs-0);
+    }
+}
+
+/** Menu **/
+.menu_sidebar_slide_left .header-menu-sidebar , /* showing */
+.hiding-header-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar /*hiding */ {
+    transition: transform .1s linear;
+}
+
+.menu_sidebar_slide_left .header-menu-sidebar {
+    width: 100%;
+}
+
+#nv-primary-navigation-sidebar {
+    text-align: center;
+}
+
+.mobile-blog-name {
+    line-height: calc(var(--base) * var(--ms0));
+    font-weight: bold;
+    font-family: "Roboto Condensed";
+    font-size: 22px;
+    width: auto;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.header-menu-sidebar-inner {
+    position: relative;
+    top: -58px;
+}
+.close-sidebar-panel {
+    position:relative;
+    z-index: 99999999999;
+}

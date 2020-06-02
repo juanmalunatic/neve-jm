@@ -1,0 +1,44 @@
+/* https://cloudfour.com/thinks/responsive-guide-to-type-sizing/ */
+
+/* Variables */
+
+:root
+{
+    --ratio: 1.2;
+    --base: 1.1;
+    --base-em: calc(var(--base) * 1em);
+    --base-px: calc(var(--base) * 16px);
+
+    --ms0: 1;
+    --ms1: var(--ratio);                    /* 1.2   */
+    --ms2: calc(var(--ratio) * var(--ms1)); /* 1.44  */
+    --ms3: calc(var(--ratio) * var(--ms2)); /* 1.728 */
+    --ms4: calc(var(--ratio) * var(--ms3)); /* 2.074 */
+    --ms5: calc(var(--ratio) * var(--ms4)); /* 2.488 */
+    --ms6: calc(var(--ratio) * var(--ms5)); /* 2.986 */
+    --ms7: calc(var(--ratio) * var(--ms6)); /* 3.583 */
+}
+
+/* Default sizes */
+body
+{
+    font-size: calc(var(--base-em) * var(--ms0));
+    line-height: calc(var(--base) * var(--ms2));
+}
+
+h6 { font-size: calc(var(--base-em) * var(--ms0)); }
+h5 { font-size: calc(var(--base-em) * var(--ms1)); }
+h4 { font-size: calc(var(--base-em) * var(--ms2)); }
+h3 { font-size: calc(var(--base-em) * var(--ms3)); }
+h2 { font-size: calc(var(--base-em) * var(--ms4)); }
+h1 { font-size: calc(var(--base-em) * var(--ms5)); }
+
+h1 {
+    line-height: calc(var(--base) * var(--ms0));
+}
+
+h2,
+h3 {
+    line-height: calc(var(--base) * var(--ms1));
+}
+
