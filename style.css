@@ -235,6 +235,28 @@ input[type=color], input[type=date], input[type=datetime-local], input[type=date
     border-width: 1px;
 }
 
+/* Projects */
+
+#project-metadata {
+    --font-size: 0.85em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+#project-metadata .pair-label {
+    color: #676767;
+    font-size: var(--font-size);
+
+}
+
+#project-metadata .pair-value {
+    font-size: var(--font-size);
+}
+
 /** ============================   Footer  =============================== **/
 
 #footer {
